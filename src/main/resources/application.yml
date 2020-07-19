@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test
+    username: test
+    password: test
+    hikari:
+      driverClassName: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://localhost:5432/test
+      username: test
+      password: test
+  jpa:
+    database: postgresql
+    show-sql: true
+  liquibase:
+    enabled: true
+    user: test
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    drop-first: true
+debug: true

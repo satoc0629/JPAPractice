@@ -1,0 +1,221 @@
+databaseChangeLog:
+  - changeSet:
+      id: JPAPractice-1
+      author: metatrading
+      changes:
+        - createTable:
+            tableName: user
+            remarks: 'ユーザテーブル'
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar
+                  remarks: 'ユーザ名'
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: 'Tom'
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: 'Joe'
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: 'Ichiro'
+        - createTable:
+            tableName: storage
+            remarks: 'アイテム箱。ユーザは複数件持てる。'
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+              - column:
+                  name: name
+                  type: varchar
+                  remarks: 'アイテムボックス。'
+        - addForeignKeyConstraint:
+            constraintName: fk_storage_user
+            baseTableName: storage
+            baseColumnNames: user_id
+            referencedTableName: user
+            referencedColumnNames: id
+        - insert:
+            tableName: storage
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: name
+                  value: 'storage_1'
+        - insert:
+            tableName: storage
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: name
+                  value: 'storage_2'
+        - createTable:
+            tableName: equipment
+            remarks: 装備。ユーザは複数件持つ。
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+              - column:
+                  name: item_id
+                  type: int
+              - column:
+                  name: location
+                  type: varchar
+                  remarks: 装備部位
+        - addForeignKeyConstraint:
+            constraintName: fk_equipment_user
+            baseTableName: equipment
+            baseColumnNames: user_id
+            referencedTableName: user
+            referencedColumnNames: id
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: item_id
+                  value: 1
+              - column:
+                  name: location
+                  value: arm
+        - createTable:
+            tableName: equipment_item
+            remarks: 装備品。装備に１件紐づく。
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar
+                  remarks: 名前
+              - column:
+                  name: defence
+                  type: int
+                  remarks: 防御力
+              - column:
+                  name: offence
+                  type: int
+                  remarks: 攻撃力
+        - insert:
+            tableName: equipment_item
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: Sword
+              - column:
+                  name: defence
+                  value: 0
+              - column:
+                  name: offence
+                  value: 3
+        - insert:
+            tableName: equipment_item
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: Shield
+              - column:
+                  name: defence
+                  value: 5
+              - column:
+                  name: offence
+                  value: 0
+        - createTable:
+            tableName: consumable_item
+            remarks: 消耗品。
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar
+                  remarks: 名前
+              - column:
+                  name: effect
+                  type: varchar
+                  remarks: 効果
+        - insert:
+            tableName: consumable_item
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: Potion
+              - column:
+                  name: effect
+                  value: '10 HP Recovery'
