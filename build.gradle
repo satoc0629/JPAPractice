@@ -23,12 +23,6 @@ plugins {
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
 
-repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -37,29 +31,30 @@ dependencies {
 //        exclude group:'org.hibeernate', module:'hibernate-core'
     }
 //    implementation 'org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.7'
+    implementation ('org.springframework.boot:spring-boot-starter-security')
     implementation 'org.springframework:spring-instrument'
-    implementation 'org.hibernate:hibernate-validator:6.1.5.Final'
+    implementation 'org.hibernate:hibernate-validator:7.0.4.Final'
 //    implementation 'javax.validation:validation-api:2.0.1.Final'
 //    implementation 'org.eclipse.persistence:org.eclipse.persistence.core:2.7.7'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation('org.springframework.data:spring-data-rest-hal-explorer')
 
-    implementation 'org.postgresql:postgresql:42.2.14'
-    implementation 'org.yaml:snakeyaml:1.26'
+    implementation 'org.postgresql:postgresql:42.3.4'
+    implementation 'org.yaml:snakeyaml:1.30'
 
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:28.2-jre'
+    implementation 'com.google.guava:guava:31.1-android'
 
     // Use JUnit Jupiter API for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
 
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
-    implementation 'org.liquibase:liquibase-core:3.8.1'
-    implementation 'org.liquibase:liquibase-groovy-dsl:2.1.1'
-    implementation("ch.qos.logback:logback-core:1.2.3")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation 'org.liquibase:liquibase-core:4.10.0'
+    implementation 'org.liquibase:liquibase-groovy-dsl:3.0.2'
+    implementation('ch.qos.logback:logback-core:1.2.11')
+    implementation('ch.qos.logback:logback-classic:1.2.11')
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
 //    liquibaseRuntime 'org.postgresql:postgresql:42.2.14'
 }
@@ -72,4 +67,8 @@ application {
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
+}
+
+repositories {
+    mavenCentral()
 }

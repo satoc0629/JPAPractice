@@ -16,6 +16,6 @@ import java.util.Optional;
 public interface EquipmentRepository extends JpaRepository<Equipment, Integer> {
 
     @Override
-    @Lock(LockModeType.OPTIMISTIC)
+//    @Lock(LockModeType.OPTIMISTIC)
     Optional<Equipment> findById(Integer integer);
 }

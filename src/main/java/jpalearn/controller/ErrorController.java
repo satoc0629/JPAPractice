@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 public class ErrorController {
     @PostMapping("/error")
     @ResponseBody
-    public String error(Model model, HttpServletRequest request, @RequestBody String body) {
+    public String error(Model model, HttpServletRequest request, @RequestBody(required = false) String body) {
         log.error("request.getQueryString():{}", request.getQueryString());
         log.error("request.body:{}", body);
         return "error";
     }
     @GetMapping("/error")
     @ResponseBody
-    public String getError(Model model, HttpServletRequest request, @RequestBody String body) {
+    public String getError(Model model, HttpServletRequest request, @RequestBody(required = false) String body) {
         log.error("request.getQueryString():{}", request.getQueryString());
         log.error("request.body:{}", body);
         return "error";
