@@ -114,6 +114,10 @@ databaseChangeLog:
                   name: location
                   type: varchar
                   remarks: 装備部位
+              - column:
+                  name: version
+                  type: bigint
+                  defaultValue: 0
         - addForeignKeyConstraint:
             constraintName: fk_equipment_user
             baseTableName: equipment
@@ -135,6 +139,9 @@ databaseChangeLog:
               - column:
                   name: location
                   value: arm
+              - column:
+                  name: version
+                  value: 0
         - createTable:
             tableName: equipment_item
             remarks: 装備品。装備に１件紐づく。

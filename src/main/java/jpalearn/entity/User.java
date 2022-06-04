@@ -2,12 +2,15 @@ package jpalearn.entity;
 
 
 import lombok.Data;
-import org.hibernate.annotations.IndexColumn;
-import org.hibernate.annotations.Sort;
-import org.hibernate.annotations.SortComparator;
+import org.hibernate.annotations.*;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.Index;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -24,16 +27,16 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-//    @OrderColumn(name = "id")
-//    @OrderBy
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_equipment_user"), nullable = false, insertable = false, updatable = false)
+    @OrderColumn(name = "id", insertable = false, updatable = false)
+    @OrderBy
 //    @RestResource(path = "equipments", rel = "equipments")
     private List<Equipment> equipmentList;
-    @OneToMany
-    @JoinColumn(name = "user_id")
-//    @OrderColumn(name = "id")
-//    @OrderBy
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_storage_user"), nullable = false, insertable = false, updatable = false)
+    @OrderColumn(name = "id", updatable = false, insertable = false)
+    @OrderBy
 //    @RestResource(path = "storages", rel = "storages")
     private List<Storage> storageList;
 }

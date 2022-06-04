@@ -16,4 +16,6 @@ spring:
     user: test
     change-log: classpath:db/changelog/db.changelog-master.yaml
     drop-first: true
+  thymeleaf:
+    cache: false
 debug: true
