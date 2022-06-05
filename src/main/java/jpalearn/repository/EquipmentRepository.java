@@ -14,8 +14,7 @@ import java.util.Optional;
 @Repository
 @RepositoryRestResource(path = "equipments", collectionResourceRel = "equipments", itemResourceRel = "equipments")
 public interface EquipmentRepository extends JpaRepository<Equipment, Integer> {
-
-    @Override
-//    @Lock(LockModeType.OPTIMISTIC)
-    Optional<Equipment> findById(Integer integer);
+//
+//    @Override
+//    Optional<Equipment> findById(Integer integer);
 }

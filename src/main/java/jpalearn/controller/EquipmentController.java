@@ -23,7 +23,7 @@ public class EquipmentController {
     private final EquipmentRepository equipmentRepository;
 
     @GetMapping("list/{id}")
-    public String list(@PathVariable("id") Integer id,@RequestParam("message")String message, Model model) {
+    public String list(@PathVariable("id") Integer id, @RequestParam(required = false, name = "message") String message, Model model) {
         var equipment = equipmentRepository.findById(id);
         log.info("equipment:{}", equipment.get());
         model.addAttribute("equipment", equipment.get());
