@@ -11,6 +11,7 @@
     </style>
 </head>
 <body>
+<div th:text="${@userSession.lastAccessTime}"></div>
 <div th:if="${message != null}" th:text="${message}" style="color: red"></div>
 <form th:action="@{/equipment/save}" method="post" th:object="${equipment}">
     <fieldset class="two-column-grid">

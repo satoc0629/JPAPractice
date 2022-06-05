@@ -20,4 +20,7 @@ spring:
     cache: false
   session:
     store-type: jdbc
+    jdbc:
+      initialize-schema: always
+      table-name: spring_session
 debug: true

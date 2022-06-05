@@ -10,14 +10,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfigure {
 
     @Bean
-    SecurityFilterChain sec(HttpSecurity httpSecurity) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and()
                 .authorizeRequests().mvcMatchers("*").permitAll()
                 .and()
-                .csrf().disable()
                 .build();
     }
 }
